@@ -38,18 +38,34 @@ public class NextPermutation {
             }
         }
         int pivot = i;
-        if(pivot >= 1){
-            swap(arr, pivot, pivot-1);
-            Arrays.sort(arr, pivot, arr.length-1);
+        if(pivot == 0){
+            reverse(arr, 0, arr.length-1);
         }
         else{
-            Arrays.sort(arr);
+            int elem = pivot-1;
+            int ptr = arr.length - 1;
+            while(ptr != 0){
+                if(arr[ptr] > arr[elem]){
+                    swap(arr,ptr,elem);
+                    break;
+                }
+                ptr--;
+            }
+            reverse(arr, pivot, arr.length-1);
         }
-        
     }
     static void swap(int[] arr, int a, int b){
         int temp = arr[a];
         arr[a] = arr[b];
         arr[b] = temp;
+    }
+    static void reverse(int[] arr, int a, int b){
+        int s = a;
+        int e = b;
+        while(s < e){
+            swap(arr,s,e);
+            s++;
+            e--;
+        }
     }
 }

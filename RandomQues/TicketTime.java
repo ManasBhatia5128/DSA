@@ -11,6 +11,10 @@ class Node{
     }
 }
 public class TicketTime {
+    public static void main(String[] args) {
+        
+    }
+
     static int ticketTime(int[] arr, int k){
         Node head = new Node(arr[0], 0);
         Node temp = head;
@@ -43,5 +47,24 @@ public class TicketTime {
             }
         }
         // return 0;
+    }
+    static int ticketTimeArray(int[] arr, int k){
+        int i = 0;
+        int n = arr.length;
+        int timer = 0;
+        while(true){
+            i = i % n;
+            if(i == k && arr[k] == 0){
+                break;
+            }
+            if(arr[i] == 0){
+                i++;
+                continue;
+            }
+            arr[i] = arr[i] - 1;
+            timer++;
+            i++;
+        }
+        return timer;
     }
 }
