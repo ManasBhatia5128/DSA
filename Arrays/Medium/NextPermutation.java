@@ -1,6 +1,7 @@
 package Arrays.Medium;
 
 import java.util.Arrays;
+import java.util.List;
 
 // Understand pass by value and reference again
 public class NextPermutation {
@@ -66,6 +67,13 @@ public class NextPermutation {
             swap(arr,s,e);
             s++;
             e--;
+        }
+    }
+    static void generatePermutations(int[] arr, List<int[]> ans, int[] temp, int count){
+        for(int i = 0; i < arr.length; i++){
+            temp[count] = arr[i];
+            count++;
+            generatePermutations(arr, ans, temp, count);
         }
     }
 }
